@@ -127,8 +127,9 @@ static struct sk_buff *ipv6_gso_segment(struct sk_buff *skb,
 					   sizeof(*ipv6h));
 		if (proto == IPPROTO_UDP) {
 			unfrag_ip6hlen = ip6_find_1stfragopt(skb, &prevhdr);
-			fptr = (struct frag_hdr *)(skb_network_header(skb) +
-				unfrag_ip6hlen);
+			if (unfrag_ip6hlen < 0)
+				return ERR_PTR(unfrag_ip6hlen);
+			fptr = (struct frag_hdr *)((u8 *)ipv6h + unfrag_ip6hlen);
 			fptr->frag_off = htons(offset);
 			if (skb->next != NULL)
 				fptr->frag_off |= htons(IP6_MF);
