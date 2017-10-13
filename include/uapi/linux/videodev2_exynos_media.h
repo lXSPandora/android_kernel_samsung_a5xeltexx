@@ -15,8 +15,54 @@
 #ifndef __LINUX_VIDEODEV2_EXYNOS_MEDIA_H
 #define __LINUX_VIDEODEV2_EXYNOS_MEDIA_H
 
-#include <linux/videodev2.h>
-#include <linux/exynos_mfc_media.h>
+/*      Pixel format          FOURCC                     depth  Description  */
+
+/* RGB formats */
+#define V4L2_PIX_FMT_RGB32X    v4l2_fourcc('R', 'G', 'B', 'X') /* 32  RGB-8-8-8-8   */
+#define V4L2_PIX_FMT_ARGB32    v4l2_fourcc('A', 'R', 'G', 'B') /* 32  ARGB-8-8-8-8   */
+
+/* two planes -- one Y, one Cr + Cb interleaved  */
+#define V4L2_PIX_FMT_YUV422V_2P v4l2_fourcc('Y', 'U', 'V', '2') /* 16  Y/Cb/Cr */
+#define V4L2_PIX_FMT_YUV444_2P v4l2_fourcc('Y', 'U', '2', 'P') /* 24  Y/CbCr */
+#define V4L2_PIX_FMT_YVU444_2P v4l2_fourcc('Y', 'V', '2', 'P') /* 24  Y/CrCb */
+
+/* three planes -- one Y, one Cr, one Cb */
+#define V4L2_PIX_FMT_YUV422V_3P v4l2_fourcc('Y', 'U', 'V', '3') /* 16  Y/Cb/Cr */
+#define V4L2_PIX_FMT_YUV444_3P v4l2_fourcc('Y', 'U', '3', 'P') /* 24  Y/Cb/Cr */
+
+/* two non contiguous planes - one Y, one Cr + Cb interleaved  */
+/* 21  Y/CrCb 4:2:0  */
+#define V4L2_PIX_FMT_NV21M    v4l2_fourcc('N', 'M', '2', '1')
+/* 12  Y/CbCr 4:2:0 16x16 macroblocks */
+#define V4L2_PIX_FMT_NV12MT_16X16 v4l2_fourcc('V', 'M', '1', '2')
+
+/* three non contiguous planes - Y, Cb, Cr */
+/* 12  YVU420 planar */
+//#define V4L2_PIX_FMT_YVU420M  v4l2_fourcc('Y', 'V', 'U', 'M')
+
+/* compressed formats */
+#define V4L2_PIX_FMT_H264_MVC v4l2_fourcc('M', '2', '6', '4') /* H264 MVC */
+#define V4L2_PIX_FMT_FIMV     v4l2_fourcc('F', 'I', 'M', 'V') /* FIMV  */
+#define V4L2_PIX_FMT_FIMV1    v4l2_fourcc('F', 'I', 'M', '1') /* FIMV1 */
+#define V4L2_PIX_FMT_FIMV2    v4l2_fourcc('F', 'I', 'M', '2') /* FIMV2 */
+#define V4L2_PIX_FMT_FIMV3    v4l2_fourcc('F', 'I', 'M', '3') /* FIMV3 */
+#define V4L2_PIX_FMT_FIMV4    v4l2_fourcc('F', 'I', 'M', '4') /* FIMV4 */
+#define V4L2_PIX_FMT_VP8      v4l2_fourcc('V', 'P', '8', '0') /* VP8 */
+#define V4L2_PIX_FMT_VP9      v4l2_fourcc('V', 'P', '9', '0') /* VP9 */
+#define V4L2_PIX_FMT_HEVC    v4l2_fourcc('H', 'E', 'V', 'C') /* HEVC */
+
+/* yuv444 of JFIF JPEG */
+#define V4L2_PIX_FMT_JPEG_444 v4l2_fourcc('J', 'P', 'G', '4')
+/* yuv422 of JFIF JPEG */
+#define V4L2_PIX_FMT_JPEG_422 v4l2_fourcc('J', 'P', 'G', '2')
+/* yuv420 of JFIF JPEG */
+#define V4L2_PIX_FMT_JPEG_420 v4l2_fourcc('J', 'P', 'G', '0')
+/* grey of JFIF JPEG */
+#define V4L2_PIX_FMT_JPEG_GRAY v4l2_fourcc('J', 'P', 'G', 'G')
+/* yuv422v of JFIF JPEG */
+#define V4L2_PIX_FMT_JPEG_422V v4l2_fourcc('J', 'P', 'G', '5')
+/* yuv411 of JFIF JPEG */
+#define V4L2_PIX_FMT_JPEG_411 v4l2_fourcc('J', 'P', 'G', '1')
 
 /* added for lihwjpeg.so */
 
